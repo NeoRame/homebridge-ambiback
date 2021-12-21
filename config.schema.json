@@ -1,8 +1,8 @@
 {
-    "pluginAlias": "Ambiback",
+    "pluginAlias": "AmbiBack",
     "pluginType": "accessory",
     "singular": true,
-    "headerDisplay": "<img src='https://raw.githubusercontent.com/NeoRame/homebridge-dreamscreen-rm/master/gfx/DreamscreenRM.svg' width='100%'>\n\nControl your DreamScreen with HomeKit",
+    "headerDisplay": "<img src='https://raw.githubusercontent.com/NeoRame/homebridge-ambiback/master/gfx/AmbiBack_Logo_Horizontal_COLOR.svg' width='80%'>\n\nAmbiBack HomeKit control",
     "schema": {
         "type": "object",
         "properties": {

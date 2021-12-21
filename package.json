@@ -3,8 +3,8 @@
 	"name": "homebridge-ambiback",
 	"displayName": "Homebridge AmbiBack",
 	"description": "A simple switch to turn on or off your AmbiBack.",
-	"version": "0.8.0",
-  	"license": "ISC",
+	"version": "0.8.2",
+  "license": "ISC",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/NeoRame/homebridge-ambiback"
