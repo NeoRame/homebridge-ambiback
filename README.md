@@ -7,7 +7,7 @@ AmbiBack Bridge control for HomeKit
 [![License](https://img.shields.io/github/license/neorame/homebridge-ambiback)](https://github.com/NeoRame/homebridge-ambiback/blob/master/LICENSE)
 
 
-## homebridge-ambiback Plugin
+# homebridge-ambiback Plugin
 `homebridge-ambiback` is a [Homebridge](https://github.com/nfarina/homebridge) plugin with which you can create a
 HomeKit switch to control your [AmbiBack Bridge](https://www.ambiback.de/category/ambiback).
 
