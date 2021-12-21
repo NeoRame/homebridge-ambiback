@@ -17,7 +17,7 @@ This Plugin is an modified version of [homebridge-http-switch](https://github.co
 
 First of all you need to have [Homebridge](https://github.com/nfarina/homebridge) installed. Refer to the repo for
 instructions.  
-Then run the following command to install `homebridge-http-switch`
+Then run the following command to install `homebridge-ambiback`
 
 ```
 sudo npm install -g homebridge-ambiback
