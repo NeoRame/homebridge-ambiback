@@ -1,31 +1,36 @@
 {
-  "private": true,
-  "displayName": "Homebridge AmbiBack",
-  "name": "homebridge-ambiback",
-  "version": "0.8.0",
-  "description": "A simple switch to turn on or off your AmbiBack",
-  "license": "ISC",
+	"private": false,
+	"name": "homebridge-ambiback",
+	"displayName": "Homebridge AmbiBack",
+	"description": "A simple switch to turn on or off your AmbiBack.",
+	"version": "0.8.0",
+  	"license": "ISC",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/NeoRame/homebridge-ambiback"
+	},
 	"author": "NeoRame",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/NeoRame/homebridge-ambiback"
-  },
+	"engines": {
+		"homebridge": ">=0.4.8",
+		"node": ">=10.17.0"
+	},
+	"keywords": [
+		"homebridge-plugin",
+		"homekit",
+		"dreamscreen",
+		"ambilight",
+		"ambiback"
+	],
+	"dependencies": {
+		"homebridge-http-base": "~2.1.12"
+	},
 	"bugs": {
 		"email": "rameonweb@gmx.net",
 		"url": "https://github.com/NeoRame/homebridge-ambiback/issues"
 	},
-  "engines": {
-    "homebridge": ">=0.4.8"
-    "node": ">=10.17.0",
-  },
-  "keywords": [
-    "homebridge-plugin",
-		"homekit",
-		"dreamscreen",
-		"ambilight",
-    "ambiback"
-  ],
-  "dependencies": {
-    "homebridge-http-base": "~2.1.12"
-  }
+	"funding": {
+		"type" : "paypal",
+		"url" : "https://paypal.me/Cash4NeoRame"
+	},
+	"homepage": "https://github.com/NeoRame/homebridge-ambiback"
 }
