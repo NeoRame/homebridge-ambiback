@@ -2,8 +2,8 @@
 	"private": false,
 	"name": "homebridge-ambiback",
 	"displayName": "Homebridge AmbiBack",
-	"description": "A simple switch to turn on or off your AmbiBack.",
-	"version": "0.8.2",
+	"description": "A simple switch to turn on or off your AmbiBack Bridge Controller.",
+	"version": "0.8.4",
   "license": "ISC",
 	"repository": {
 		"type": "git",

@@ -307,9 +307,9 @@ AMBIBACK.prototype = {
 
         informationService
             .setCharacteristic(Characteristic.Manufacturer, "NeoRame")
-            .setCharacteristic(Characteristic.Model, "AmbiBack")
+            .setCharacteristic(Characteristic.Model, "AmbiBack Bridge")
             .setCharacteristic(Characteristic.SerialNumber, this.serialNumber || "xxxxxxxxxxxxxx")
-            .setCharacteristic(Characteristic.FirmwareRevision, this.FW || "0.4.226");
+            .setCharacteristic(Characteristic.FirmwareRevision, this.FW);
 
         return [informationService, this.homebridgeService];
     },

@@ -2,7 +2,7 @@
     "pluginAlias": "AmbiBack",
     "pluginType": "accessory",
     "singular": true,
-    "headerDisplay": "<img src='https://raw.githubusercontent.com/NeoRame/homebridge-ambiback/master/gfx/AmbiBack_Logo_Horizontal_COLOR.svg' width='80%'>\n\nAmbiBack HomeKit control",
+    "headerDisplay": "<img src='https://raw.githubusercontent.com/NeoRame/homebridge-ambiback/master/gfx/AmbiBack_Logo_Horizontal_COLOR.svg' width='50%'>\n\nAmbiBack Bridge control for HomeKit.",
     "schema": {
         "type": "object",
         "properties": {
@@ -11,14 +11,6 @@
                 "type": "string",
                 "required": true,
                 "default": "AmbiBack"
-            },
-            "serialNumber": {
-                "title": "Serial Number",
-                "type": "string",
-                "required": false,
-                "minLength": 14,
-                "maxLength": 14,
-                "placeholder": "N30R4MER0CKZ21"
             },
             "FW": {
                 "title": "Firmware",
@@ -32,6 +24,32 @@
                   { "title": "0.3.213", "enum": ["0.3.213"] }
                 ]
             },
+            "serialNumber": {
+                "title": "Serial Number",
+                "type": "string",
+                "required": false,
+                "minLength": 14,
+                "maxLength": 14,
+                "placeholder": "N30R4MER0CKZ21"
+            },
+            "onUrl": {
+                "title": " ",
+                "type": "string",
+                "default": "http://192.168.0.1/setdreamscreenemulation?value=1",
+                "required": true
+            },
+            "offUrl": {
+                "title": " ",
+                "type": "string",
+                "default": "http://192.168.0.1/setdreamscreenemulation?value=0",
+                "required": true
+            },
+            "statusUrl": {
+                "title": " ",
+                "type": "string",
+                "default": "http://192.168.0.1/getparamatersasjson",
+                "required": true
+            },
             "switchType": {
                 "title": "Switch Type",
                 "type": "string",
@@ -41,35 +59,48 @@
                 ],
                 "required": true
             },
-            "onUrl": {
-                "title": "onUrl",
-                "type": "string",
-                "default": "http://192.168.178.56/setdreamscreenemulation?value=1",
-                "required": true
-            },
-            "offUrl": {
-                "title": "offUrl",
-                "type": "string",
-                "default": "http://192.168.178.56/setdreamscreenemulation?value=0",
-                "required": true,
-                "description": "The IP adress of your DreamScreen (can be found in the App under *Update and Reset*)"
-            },
-            "statusUrl": {
-                "title": "offUrl",
-                "type": "string",
-                "default": "http://192.168.178.56/getparamatersasjson",
-                "required": true,
-                "description": "The IP adress of your DreamScreen (can be found in the App under *Update and Reset*)"
-            },
             "statusPattern": {
-                "title": "script",
+                "title": "It's Magic",
                 "type": "string",
                 "default": "(.|\n)*dreamscreenemulation\": \"1\"(.|\n)*,",
                 "oneOf": [
-                  { "title": "where the magic happens", "enum": ["(.|\n)*dreamscreenemulation\": \"1\"(.|\n)*,"] }
+                  { "title": "Secret Script ;)", "enum": ["(.|\n)*dreamscreenemulation\": \"1\"(.|\n)*,"] }
                 ],
                 "required": true
             }
         }
-    }
+    },
+    "layout": [
+        "name",
+        {
+            "type": "flex",
+            "flex-flow": "row wrap",
+            "items": [
+                "FW",
+                "serialNumber"
+            ]
+        },
+        {
+            "type": "fieldset",
+            "title": "IP Settings",
+            "expandable": true,
+            "expanded": true,
+            "description": "Please update the Url's with the IP from your AmbiBack. IMPORTANT: Don't delete any of the other stuff!",
+            "items": [
+                "onUrl",
+                "offUrl",
+                "statusUrl"
+            ]
+        },
+        {
+            "type": "fieldset",
+            "title": "Magic Settings",
+            "expandable": true,
+            "expanded": false,
+            "items": [
+                "switchType",
+                "statusPattern"
+            ]
+        }
+    ]
 }
