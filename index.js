@@ -19,7 +19,7 @@ module.exports = function (homebridge) {
 
     api = homebridge;
 
-    homebridge.registerAccessory("homebridge-http-switch", "HTTP-SWITCH", HTTP_SWITCH);
+    homebridge.registerAccessory("homebridge-ambiback", "AmbiBack", AMBIBACK);
 };
 
 const SwitchType = Object.freeze({
@@ -30,7 +30,7 @@ const SwitchType = Object.freeze({
     TOGGLE_REVERSE: "toggle-reverse",
 });
 
-function HTTP_SWITCH(log, config) {
+function AMBIBACK(log, config) {
     this.log = log;
     this.name = config.name;
     this.debug = config.debug || false;
@@ -48,6 +48,10 @@ function HTTP_SWITCH(log, config) {
 
     if (config.serialNumber !== undefined && typeof config.serialNumber === "string") {
         this.serialNumber = config.serialNumber;
+    }
+
+    if (config.FW !== undefined && typeof config.FW === "string") {
+        this.FW = config.FW;
     }
 
     if (this.switchType === SwitchType.STATEFUL) {
@@ -226,7 +230,7 @@ function HTTP_SWITCH(log, config) {
     }
 }
 
-HTTP_SWITCH.prototype = {
+AMBIBACK.prototype = {
 
     parseUrls: function (config) {
         /** @namespace config.onUrl */
@@ -302,10 +306,10 @@ HTTP_SWITCH.prototype = {
         const informationService = new Service.AccessoryInformation();
 
         informationService
-            .setCharacteristic(Characteristic.Manufacturer, "Andreas Bauer")
-            .setCharacteristic(Characteristic.Model, "HTTP Switch")
-            .setCharacteristic(Characteristic.SerialNumber, this.serialNumber || "SW01")
-            .setCharacteristic(Characteristic.FirmwareRevision, packageJSON.version);
+            .setCharacteristic(Characteristic.Manufacturer, "NeoRame")
+            .setCharacteristic(Characteristic.Model, "AmbiBack")
+            .setCharacteristic(Characteristic.SerialNumber, this.serialNumber || "xxxxxxxxxxxxxx")
+            .setCharacteristic(Characteristic.FirmwareRevision, this.FW || "0.4.226");
 
         return [informationService, this.homebridgeService];
     },

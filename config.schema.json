@@ -1,0 +1,75 @@
+{
+    "pluginAlias": "Ambiback",
+    "pluginType": "accessory",
+    "singular": true,
+    "headerDisplay": "<img src='https://raw.githubusercontent.com/NeoRame/homebridge-dreamscreen-rm/master/gfx/DreamscreenRM.svg' width='100%'>\n\nControl your DreamScreen with HomeKit",
+    "schema": {
+        "type": "object",
+        "properties": {
+            "name": {
+                "title": "Name",
+                "type": "string",
+                "required": true,
+                "default": "AmbiBack"
+            },
+            "serialNumber": {
+                "title": "Serial Number",
+                "type": "string",
+                "required": false,
+                "minLength": 14,
+                "maxLength": 14,
+                "placeholder": "N30R4MER0CKZ21"
+            },
+            "FW": {
+                "title": "Firmware",
+                "type": "string",
+                "required": true,
+                "default": "0.4.225",
+                "oneOf": [
+                  { "title": "BETA Version 0.4.226", "enum": ["0.4.226"] },
+                  { "title": "Latest Version 0.4.225", "enum": ["0.4.225"] },
+                  { "title": "0.4.224", "enum": ["0.4.224"] },
+                  { "title": "0.3.213", "enum": ["0.3.213"] }
+                ]
+            },
+            "switchType": {
+                "title": "Switch Type",
+                "type": "string",
+                "default": "stateful",
+                "oneOf": [
+                  { "title": "Sateful", "enum": ["stateful"] }
+                ],
+                "required": true
+            },
+            "onUrl": {
+                "title": "onUrl",
+                "type": "string",
+                "default": "http://192.168.178.56/setdreamscreenemulation?value=1",
+                "required": true
+            },
+            "offUrl": {
+                "title": "offUrl",
+                "type": "string",
+                "default": "http://192.168.178.56/setdreamscreenemulation?value=0",
+                "required": true,
+                "description": "The IP adress of your DreamScreen (can be found in the App under *Update and Reset*)"
+            },
+            "statusUrl": {
+                "title": "offUrl",
+                "type": "string",
+                "default": "http://192.168.178.56/getparamatersasjson",
+                "required": true,
+                "description": "The IP adress of your DreamScreen (can be found in the App under *Update and Reset*)"
+            },
+            "statusPattern": {
+                "title": "script",
+                "type": "string",
+                "default": "(.|\n)*dreamscreenemulation\": \"1\"(.|\n)*,",
+                "oneOf": [
+                  { "title": "where the magic happens", "enum": ["(.|\n)*dreamscreenemulation\": \"1\"(.|\n)*,"] }
+                ],
+                "required": true
+            }
+        }
+    }
+}

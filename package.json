@@ -1,29 +1,31 @@
 {
-  "name": "homebridge-http-switch",
-  "version": "0.5.35",
-  "description": "Powerful http switch for Homebridge",
+  "private": true,
+  "displayName": "Homebridge AmbiBack",
+  "name": "homebridge-ambiback",
+  "version": "0.8.0",
+  "description": "A simple switch to turn on or off your AmbiBack",
   "license": "ISC",
-  "keywords": [
-    "homebridge-plugin"
-  ],
-  "scripts": {
-    "test": "echo no test defined"
-  },
+	"author": "NeoRame",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Supereg/homebridge-http-switch"
+    "url": "https://github.com/NeoRame/homebridge-ambiback"
   },
-  "bugs": {
-    "url": "https://github.com/Supereg/homebridge-http-switch/issues"
-  },
+	"bugs": {
+		"email": "rameonweb@gmx.net",
+		"url": "https://github.com/NeoRame/homebridge-ambiback/issues"
+	},
   "engines": {
-    "node": ">=10.17.0",
     "homebridge": ">=0.4.8"
+    "node": ">=10.17.0",
   },
+  "keywords": [
+    "homebridge-plugin",
+		"homekit",
+		"dreamscreen",
+		"ambilight",
+    "ambiback"
+  ],
   "dependencies": {
     "homebridge-http-base": "~2.1.12"
-  },
-  "devDependencies": {
-    "homebridge": "^1.3.4"
   }
 }
