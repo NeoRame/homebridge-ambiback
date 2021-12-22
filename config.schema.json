@@ -40,7 +40,7 @@
                 "required": false,
                 "minLength": 14,
                 "maxLength": 14,
-                "placeholder": "N30R4MER0CKZ21"
+                "placeholder": "N30R4MEF0R3V0R"
             },
             "onUrl": {
                 "title": " ",
@@ -81,7 +81,12 @@
         }
     },
     "layout": [
-        "name",
+        {
+            "type": "fieldset",
+            "items": [
+                "name"
+            ]
+        },
         {
             "type": "fieldset",
             "title": "IP Settings",
