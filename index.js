@@ -54,6 +54,10 @@ function AMBIBACK(log, config) {
         this.FW = config.FW;
     }
 
+    if (config.Model !== undefined && typeof config.Model === "string") {
+        this.Model = config.Model;
+    }
+
     if (this.switchType === SwitchType.STATEFUL) {
         this.statusPattern = /1/;
         if (config.statusPattern) {
@@ -307,7 +311,7 @@ AMBIBACK.prototype = {
 
         informationService
             .setCharacteristic(Characteristic.Manufacturer, "NeoRame")
-            .setCharacteristic(Characteristic.Model, "AmbiBack Bridge")
+            .setCharacteristic(Characteristic.Model, this.Model)
             .setCharacteristic(Characteristic.SerialNumber, this.serialNumber || "xxxxxxxxxxxxxx")
             .setCharacteristic(Characteristic.FirmwareRevision, this.FW);
 

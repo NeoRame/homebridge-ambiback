@@ -24,6 +24,16 @@
                   { "title": "0.3.213", "enum": ["0.3.213"] }
                 ]
             },
+            "Model": {
+                "title": "Model",
+                "type": "string",
+                "required": true,
+                "default": "AmbiBack Bridge",
+                "oneOf": [
+                  { "title": "AmbiBack Bridge", "enum": ["AmbiBack Bridge"] },
+                  { "title": "AmbiBack CAM", "enum": ["AmbiBack CAM"] }
+                ]
+            },
             "serialNumber": {
                 "title": "Serial Number",
                 "type": "string",
@@ -73,14 +83,6 @@
     "layout": [
         "name",
         {
-            "type": "flex",
-            "flex-flow": "row wrap",
-            "items": [
-                "FW",
-                "serialNumber"
-            ]
-        },
-        {
             "type": "fieldset",
             "title": "IP Settings",
             "expandable": true,
@@ -94,12 +96,20 @@
         },
         {
             "type": "fieldset",
-            "title": "Magic Settings",
+            "title": "Cosmetic Settings",
             "expandable": true,
             "expanded": false,
+            "description": "Place here your Infos about Hardware and Firmware, if you want.",
             "items": [
-                "switchType",
-                "statusPattern"
+                "serialNumber",
+                {
+                    "type": "flex",
+                    "flex-flow": "row wrap",
+                    "items": [
+                        "Model",
+                        "FW"
+                    ]
+                }
             ]
         }
     ]
