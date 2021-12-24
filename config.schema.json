@@ -90,7 +90,6 @@
         {
             "type": "fieldset",
             "title": "IP Settings",
-            "expandable": true,
             "expanded": true,
             "description": "Please update the Url's with the IP from your AmbiBack. IMPORTANT: Don't delete any of the other stuff!",
             "items": [
