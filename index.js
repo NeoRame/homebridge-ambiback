@@ -24,10 +24,6 @@ module.exports = function (homebridge) {
 
 const SwitchType = Object.freeze({
     STATEFUL: "stateful",
-    STATELESS: "stateless",
-    STATELESS_REVERSE: "stateless-reverse",
-    TOGGLE: "toggle",
-    TOGGLE_REVERSE: "toggle-reverse",
 });
 
 function AMBIBACK(log, config) {
@@ -138,14 +134,6 @@ function AMBIBACK(log, config) {
         .on("get", this.getStatus.bind(this))
         .on("set", this.setStatus.bind(this));
 
-
-    switch (this.switchType) {
-        case SwitchType.TOGGLE_REVERSE:
-        case SwitchType.STATELESS_REVERSE:
-            onCharacteristic.updateValue(true);
-            break;
-    }
-
     /** @namespace config.pullInterval */
     if (config.pullInterval) {
         if (this.switchType === SwitchType.STATEFUL) {
@@ -159,8 +147,7 @@ function AMBIBACK(log, config) {
     }
 
     if (config.notificationID) {
-        if (this.switchType === SwitchType.STATEFUL
-            || this.switchType === SwitchType.TOGGLE || this.switchType === SwitchType.TOGGLE_REVERSE) {
+        if (this.switchType === SwitchType.STATEFUL) {
             /** @namespace config.notificationPassword */
             /** @namespace config.notificationID */
             notifications.enqueueNotificationRegistrationIfDefined(api, log, config.notificationID, config.notificationPassword, this.handleNotification.bind(this));
@@ -209,9 +196,6 @@ function AMBIBACK(log, config) {
             this.log("  - offUrls: " + JSON.stringify(this.off));
         if (this.status)
             this.log("  - statusUrl: " + JSON.stringify(this.status));
-
-        if (this.switchType === SwitchType.STATELESS || this.switchType === SwitchType.STATELESS_REVERSE)
-            this.log("  - timeout for stateless switch: " + this.timeout);
 
         if (this.pullTimer)
             this.log("  - pullTimer started with interval " + config.pullInterval);
@@ -384,20 +368,6 @@ AMBIBACK.prototype = {
                     }
                 });
                 break;
-            case SwitchType.STATELESS:
-                callback(null, false);
-                break;
-            case SwitchType.STATELESS_REVERSE:
-                callback(null, true);
-                break;
-            case SwitchType.TOGGLE:
-            case SwitchType.TOGGLE_REVERSE:
-                callback(null, this.homebridgeService.getCharacteristic(Characteristic.On).value);
-                break;
-
-            default:
-                callback(new Error("Unrecognized switch type"));
-                break;
         }
     },
 
@@ -408,30 +378,6 @@ AMBIBACK.prototype = {
         switch (this.switchType) {
             case SwitchType.STATEFUL:
                 this._makeSetRequest(on, callback);
-                break;
-            case SwitchType.STATELESS:
-                if (!on) {
-                    callback();
-                    break;
-                }
-
-                this._makeSetRequest(true, callback);
-                break;
-            case SwitchType.STATELESS_REVERSE:
-                if (on) {
-                    callback();
-                    break;
-                }
-
-                this._makeSetRequest(false, callback);
-                break;
-            case SwitchType.TOGGLE:
-            case SwitchType.TOGGLE_REVERSE:
-                this._makeSetRequest(on, callback);
-                break;
-
-            default:
-                callback(new Error("Unrecognized switch type"));
                 break;
         }
     },
@@ -504,25 +450,6 @@ AMBIBACK.prototype = {
 
             this.resetSwitchWithTimeoutIfStateless();
         });
-    },
-
-    resetSwitchWithTimeoutIfStateless: function () {
-        switch (this.switchType) {
-            case SwitchType.STATELESS:
-                this.log("Resetting switch to OFF");
-
-                setTimeout(() => {
-                    this.homebridgeService.setCharacteristic(Characteristic.On, false);
-                }, this.timeout);
-                break;
-            case SwitchType.STATELESS_REVERSE:
-                this.log("Resetting switch to ON");
-
-                setTimeout(() => {
-                    this.homebridgeService.setCharacteristic(Characteristic.On, true);
-                }, this.timeout);
-                break;
-        }
     },
 
 };
