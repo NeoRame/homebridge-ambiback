@@ -2,6 +2,7 @@
 AmbiBack Bridge control for HomeKit
 
 #
+[![verified-by-homebridge](https://badgen.net/badge/homebridge/verified/purple)](https://github.com/homebridge/homebridge/wiki/Verified-Plugins)
 [![npm version](https://img.shields.io/npm/v/homebridge-ambiback?logoColor=white)](https://www.npmjs.com/package/homebridge-ambiback)
 [![npm downloads](https://img.shields.io/npm/dt/homebridge-ambiback)](https://www.npmjs.com/package/homebridge-ambiback)
 [![License](https://img.shields.io/github/license/neorame/homebridge-ambiback)](https://github.com/NeoRame/homebridge-ambiback/blob/master/LICENSE)
